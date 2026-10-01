@@ -7,13 +7,13 @@
             },
             "ssh": "Disabled",
             "previewLimit": 50,
-            "server": "localhost",
+            "server": "",
             "port": 3306,
             "driver": "MySQL",
-            "name": "meu_banco",
+            "name": "",
             "database": "banco_lixeirai",
-            "username": "root",
-            "password": "2016Fjmm!"
+            "username": "",
+            "password": ""
         }
     ]
 }
