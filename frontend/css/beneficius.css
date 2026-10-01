@@ -1,0 +1,213 @@
+/* ============================================================
+   LixeirAI - Estilo Benefícios
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --verde-principal: #2ecc71;
+    --verde-escuro: #27ae60;
+    --verde-claro: #a8e6cf;
+    --branco: #ffffff;
+    --preto: #1a1a2e;
+    --cinza-escuro: #16213e;
+    --cinza-medio: #2d3436;
+    --cinza-claro: #636e72;
+    --vermelho: #e74c3c;
+    --sombra: 0 10px 40px rgba(0, 0, 0, 0.3);
+    --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.15);
+    --transicao: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius: 16px;
+    --radius-sm: 10px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(170deg, #0a0e17 0%, #0d2137 40%, #0a1a28 100%);
+    color: var(--branco);
+    min-height: 100vh;
+}
+
+/* ============ HEADER ============ */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: rgba(13, 19, 30, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(46, 204, 113, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--verde-principal);
+    letter-spacing: -0.5px;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+header span {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.88rem;
+}
+
+header strong {
+    color: var(--verde-principal);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* ============ MAIN ============ */
+
+main {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 28px 20px;
+}
+
+section h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--verde-principal);
+    margin-bottom: 6px;
+}
+
+section > p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.92rem;
+    margin-bottom: 22px;
+}
+
+/* ============ LISTA BENEFÍCIOS ============ */
+
+#listaBeneficios {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.card-beneficio {
+    background: rgba(26, 26, 46, 0.6);
+    border: 1px solid rgba(46, 204, 113, 0.12);
+    border-radius: var(--radius);
+    padding: 22px 18px;
+    transition: var(--transicao);
+}
+
+.card-beneficio:hover {
+    background: rgba(26, 26, 46, 0.8);
+    border-color: rgba(46, 204, 113, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(46, 204, 113, 0.1);
+}
+
+.card-beneficio h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--branco);
+    margin-bottom: 8px;
+}
+
+.card-beneficio p {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.88rem;
+    line-height: 1.45;
+    margin-bottom: 14px;
+}
+
+.card-beneficio strong {
+    display: inline-block;
+    padding: 5px 14px;
+    background: rgba(46, 204, 113, 0.1);
+    border: 1px solid rgba(46, 204, 113, 0.2);
+    border-radius: 20px;
+    color: var(--verde-principal);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.card-beneficio button {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--verde-principal), var(--verde-escuro));
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--branco);
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+.card-beneficio button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.35);
+}
+
+.card-beneficio button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+#listaBeneficios > p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.88rem;
+    text-align: center;
+    padding: 24px;
+}
+
+/* ============ BOTÃO VOLTAR ============ */
+
+.btn-voltar {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-sm);
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transicao);
+}
+
+.btn-voltar:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--branco);
+}
+
+/* ============ RESPONSIVO ============ */
+
+@media (max-width: 480px) {
+    header {
+        padding: 14px 16px;
+    }
+
+    main {
+        padding: 22px 14px;
+    }
+
+    .card-beneficio {
+        padding: 18px 14px;
+    }
+}

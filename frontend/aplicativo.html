@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>LixeirAI - Aplicativo</title>
+
+
+    <script src="javascript/site.js" defer></script>
+
+    <link rel="stylesheet" href="css/aplicativo.css">
+
+    
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================= -->
+    <!-- HEADER                                    -->
+    <!-- ========================================= -->
+
+    <header class="topo">
+
+        <div class="logo">
+            ♻️ LixeirAI
+        </div>
+
+
+        <div class="usuarioTopo">
+
+            <span id="nomeTopo">
+                Carregando...
+            </span>
+
+            <button
+                id="btnSair"
+                type="button">
+
+                Sair
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ========================================= -->
+    <!-- CONTEÚDO                                  -->
+    <!-- ========================================= -->
+
+    <main class="container">
+
+
+        <!-- BOAS VINDAS -->
+
+        <section class="boasVindas">
+
+            <h1>
+
+                Olá,
+                <span id="nomeUsuario">
+                    carregando...
+                </span>! 👋
+
+            </h1>
+
+            <p>
+
+                Ajude o meio ambiente
+                através da reciclagem.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- ========================================= -->
+        <!-- CARDS                                     -->
+        <!-- ========================================= -->
+
+        <section class="cards">
+
+
+            <div class="card">
+
+                <div class="icone">
+                    ⭐
+                </div>
+
+                <div>
+
+                    <h2>
+
+                        <span id="pontosUsuario">
+                            0
+                        </span>
+
+                    </h2>
+
+                    <p>
+                        Pontos
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="icone">
+                    ♻️
+                </div>
+
+                <div>
+
+                    <h2>
+
+                        <span id="totalReciclagens">
+                            0
+                        </span>
+
+                    </h2>
+
+                    <p>
+                        Reciclagens
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="icone">
+                    🎁
+                </div>
+
+                <div>
+
+                    <h2>
+
+                        <span id="proximoBeneficio">
+                            100
+                        </span>
+
+                    </h2>
+
+                    <p>
+                        Pontos para benefício
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ========================================= -->
+        <!-- SCANNER                                   -->
+        <!-- ========================================= -->
+
+        <section class="scanner">
+
+
+            <h2>
+                ♻️ Identificar material
+            </h2>
+
+
+            <p>
+
+                Tire uma foto do material
+                que deseja reciclar.
+
+            </p>
+
+
+
+            <!-- CÂMERA -->
+
+            <video
+                id="camera"
+                autoplay
+                playsinline>
+            </video>
+
+            <input
+                id="seletorImagem"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                capture="environment">
+
+
+
+            <!-- FOTO TIRADA -->
+
+            <img
+                id="fotoPreview"
+                alt="Foto do material"
+            >
+
+
+
+            <!-- CANVAS ESCONDIDO -->
+
+            <canvas
+                id="canvas"
+                style="display:none;">
+            </canvas>
+
+
+
+            <!-- BOTÕES -->
+
+            <div class="botoesCamera">
+
+
+                <button
+                    id="btnAbrirCamera"
+                    type="button">
+
+                    📷 Abrir câmera
+
+                </button>
+
+
+                <button
+                    id="btnTirarFoto"
+                    type="button"
+                    style="display:none;">
+
+                    📸 Tirar foto
+
+                </button>
+
+
+                <button
+                    id="btnAnalisar"
+                    type="button"
+                    style="display:none;">
+
+                    🤖 Identificar material
+
+                </button>
+
+
+                <button
+                    id="btnNovaFoto"
+                    type="button"
+                    style="display:none;">
+
+                    🔄 Tirar outra foto
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- ================================= -->
+            <!-- RESULTADO DA IA                   -->
+            <!-- ================================= -->
+
+            <div
+                id="resultadoIA"
+                class="resultadoIA"
+                style="display:none;">
+
+                <h3>
+                    🤖 Resultado da inteligência artificial
+                </h3>
+
+
+                <p>
+
+                    Material identificado:
+
+                </p>
+
+
+                <strong
+                    id="materialIdentificado">
+
+                </strong>
+
+                <p>
+                    Tipo:
+                    <span id="tipoIdentificado"></span>
+                </p>
+
+                <p>
+                    Lixeira:
+                    <span id="lixeiraIdentificada"></span>
+                </p>
+
+
+                <p>
+
+                    Confiança:
+
+                    <span
+                        id="confiancaIA">
+
+                    </span>
+
+                </p>
+
+                <p>
+                    Pontos:
+                    <strong id="pontosIA"></strong>
+                </p>
+
+                <div id="objetosIdentificados"></div>
+
+
+                <p
+                    id="mensagemIA"
+                    aria-live="polite">
+
+                </p>
+
+                <p
+                    id="mensagemReciclagem"
+                    aria-live="polite"
+                    hidden>
+                </p>
+
+
+            </div>
+
+            <div
+                id="modalResultadoIA"
+                class="modalResultadoIA"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="tituloModalIA"
+                hidden>
+                <div class="modalResultadoConteudo">
+                    <button
+                        id="btnFecharModalIA"
+                        class="btnFecharModalIA"
+                        type="button"
+                        aria-label="Fechar resultado">&times;</button>
+
+                    <h2 id="tituloModalIA">♻️ Material identificado</h2>
+                    <img id="fotoModalIA" alt="Resíduo analisado">
+                    <p id="statusModalIA" class="statusModalIA"></p>
+
+                    <dl class="dadosModalIA">
+                        <div><dt>Material</dt><dd id="materialModalIA"></dd></div>
+                        <div><dt>Objeto</dt><dd id="tipoModalIA"></dd></div>
+                        <div><dt>Lixeira</dt><dd id="lixeiraModalIA"></dd></div>
+                        <div><dt>Confiança da IA</dt><dd id="confiancaModalIA"></dd></div>
+                        <div><dt>Pontuação</dt><dd id="pontosModalIA"></dd></div>
+                    </dl>
+
+                    <div class="barraConfiancaIA">
+                        <span id="barraConfiancaIA"></span>
+                    </div>
+                    <p id="mensagemModalIA" aria-live="polite"></p>
+
+                    <div class="acoesModalIA">
+                        <button id="btnConfirmarReciclagem" type="button">
+                            ♻️ Confirmar e adicionar pontos
+                        </button>
+                        <button id="btnCancelarModalIA" class="btnCancelarModalIA" type="button">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="carregamentoIA"
+                class="carregamentoIA"
+                aria-live="polite"
+                aria-busy="false"
+                hidden>
+                <div class="spinnerIA" aria-hidden="true"></div>
+                <strong>🤖 Verificando o lixo...</strong>
+                <span id="textoCarregamentoIA">A IA está identificando o material.</span>
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ========================================= -->
+        <!-- MENU                                      -->
+        <!-- ========================================= -->
+
+        <section class="menu">
+
+
+            <div class="menuCard">
+
+                <div>
+                    ⭐
+                </div>
+
+                <h3>
+                    Meus pontos
+                </h3>
+
+                <p>
+                    Consulte seus pontos.
+                </p>
+
+            </div>
+
+
+
+            <div class="menuCard">
+
+                <div>
+                    🎁
+                </div>
+
+                <h3>
+                    Benefícios
+                </h3>
+
+                <p>
+                    Troque seus pontos.
+                </p>
+
+            </div>
+
+
+
+            <div class="menuCard">
+
+                <div>
+                    📊
+                </div>
+
+                <h3>
+                    Histórico
+                </h3>
+
+                <p>
+                    Veja suas reciclagens.
+                </p>
+                
+
+            </div>
+            <a href="beneficius.html">🎁 Ver benefícios</a>
+
+        </section>
+
+        <section class="historicoSecao">
+            <h2>♻️ Meu histórico</h2>
+            <div id="estatisticasMateriais" class="estatisticasMateriais"></div>
+            <div id="listaHistorico" class="listaHistorico">
+                <p>Carregando reciclagens...</p>
+            </div>
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>
+
