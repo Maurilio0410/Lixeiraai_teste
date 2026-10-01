@@ -133,6 +133,7 @@ npm start
 # Em outro terminal, crie o túnel HTTPS
 ngrok http 3000
 ```
+baixar o cloudflared para deixar o site seguro 
 
 Use a URL HTTPS fornecida pelo ngrok para acessar no celular. **A câmera funciona apenas em HTTPS ou localhost.**
 
