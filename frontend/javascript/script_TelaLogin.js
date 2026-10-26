@@ -1,13 +1,15 @@
 let Card = document.querySelector(".Card");
-let loginButton = document.querySelector(".LoginButton");
+let loginButtons = document.querySelectorAll(".LoginButton");
 let cadastroButton = document.querySelector(".cadastroButton");
 
-loginButton.onclick = () =>{
-    Card.classList.remove("cadastroActive")
-    Card.classList.add("loginActive")
-}
+loginButtons.forEach((loginButton) => {
+    loginButton.onclick = () => {
+        Card.classList.remove("cadastroActive")
+        Card.classList.add("loginActive")
+    }
+});
 
-cadastroButton.onclick = () =>{
+cadastroButton.onclick = () => {
     Card.classList.remove("loginActive")
     Card.classList.add("cadastroActive")
 }

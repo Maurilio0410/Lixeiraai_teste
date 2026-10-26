@@ -714,6 +714,32 @@ body {
 /* ============ RESPONSIVO ============ */
 
 @media (max-width: 480px) {
+    .topo {
+        gap: 10px;
+        padding: 14px 16px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        white-space: nowrap;
+    }
+
+    .usuarioTopo {
+        min-width: 0;
+        gap: 8px;
+    }
+
+    #nomeTopo {
+        max-width: 34vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    #btnSair {
+        padding: 8px 12px;
+    }
+
     .cards {
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;

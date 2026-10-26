@@ -136,6 +136,7 @@ ngrok http 3000
 
 Use a URL HTTPS fornecida pelo ngrok para acessar no celular. **A câmera funciona apenas em HTTPS ou localhost.**
 
+baixar o cloudflared para deixar o site seguro 
 
 use esse comando para deixar o site seguro: & "C:\Users\Maurilio\Downloads\cloudflared-windows-amd64.exe" tunnel --url http://localhost:3000
 ---

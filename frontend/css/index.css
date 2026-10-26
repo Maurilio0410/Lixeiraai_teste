@@ -21,7 +21,7 @@
     --cinza-claro: #636e72;
     --sombra: 0 10px 40px rgba(0, 0, 0, 0.3);
     --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.15);
-    --transicao: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transicao: 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     --radius: 14px;
 }
 
@@ -29,11 +29,13 @@ body {
     font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* Efeito de partículas de fundo */
@@ -183,6 +185,10 @@ body::before {
     margin-top: 30px;
 }
 
+.FacaLoginMobile {
+    display: none;
+}
+
 .FacaLogin h2,
 .FacaCadastro h2 {
     color: rgba(255, 255, 255, 0.7);
@@ -237,6 +243,15 @@ body::before {
 
 /* Responsivo */
 @media (max-width: 768px) {
+    body {
+        padding: 16px;
+    }
+
+    .Containerpai {
+        max-width: 480px;
+        margin: auto;
+    }
+
     .Card {
         flex-direction: column;
         min-height: auto;
@@ -244,7 +259,7 @@ body::before {
 
     .Esquerda,
     .Direita {
-        padding: 30px 20px;
+        padding: 26px 18px;
     }
 
     .Card.loginActive .Esquerda,
@@ -269,5 +284,63 @@ body::before {
 
     .Card.cadastroActive .Esquerda {
         display: none;
+    }
+
+    .Card.cadastroActive .FacaLoginMobile {
+        display: flex;
+    }
+
+    .Card.loginActive .FormLogin,
+    .Card.cadastroActive .FormCadastro {
+        animation: entrarDeCima 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .Card.loginActive .Direita {
+        display: flex;
+    }
+
+    .Card.loginActive .Direita .FormCadastro {
+        display: none;
+    }
+}
+
+@keyframes entrarDeCima {
+    from {
+        opacity: 0;
+        transform: translateY(-28px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .Card.loginActive .FormLogin,
+    .Card.cadastroActive .FormCadastro {
+        animation: none;
+    }
+}
+
+@media (max-width: 380px) {
+    body {
+        padding: 12px;
+    }
+
+    .Esquerda,
+    .Direita {
+        padding: 22px 16px;
+    }
+
+    .FormLogin h2,
+    .FormCadastro h2 {
+        font-size: 1.4rem;
+        margin-bottom: 18px;
+    }
+
+    .FacaLogin,
+    .FacaCadastro {
+        margin-top: 22px;
     }
 }
